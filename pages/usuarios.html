@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>Usuarios - Panadería San Carlos</title>
+
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        rel="stylesheet">
+
+    <link
+        rel="stylesheet"
+        href="../css/estilos.css">
+
+</head>
+
+<body>
+
+<div class="d-flex">
+
+    <!-- MENU LATERAL -->
+    <aside class="sidebar">
+
+        <div class="p-4">
+
+            <h4 class="mb-1">
+                Panadería San Carlos
+            </h4>
+
+            <small>
+                Control de Producción
+            </small>
+
+        </div>
+
+        <nav>
+
+            <a
+                href="panel.html"
+                class="menu-link">
+
+                Inicio
+            </a>
+
+            <a
+                href="productos.html"
+                class="menu-link">
+
+                Productos
+            </a>
+
+            <a
+                href="sucursales.html"
+                class="menu-link">
+
+                Sucursales
+            </a>
+
+            <a
+                href="recetas.html"
+                class="menu-link">
+
+                Recetas
+            </a>
+
+            <a
+                href="inventario.html"
+                class="menu-link">
+
+                Inventario
+            </a>
+
+            <a
+                href="produccion.html"
+                class="menu-link">
+
+                Producción
+            </a>
+
+            <a
+                href="pedidos.html"
+                class="menu-link">
+
+                Pedidos
+            </a>
+
+            <a
+                href="usuarios.html"
+                class="menu-link activo">
+
+                Usuarios
+            </a>
+
+        </nav>
+
+        <div class="universidad">
+
+            <strong>
+                Universidad Mariano Gálvez
+            </strong>
+
+            <br>
+
+            Desarrollo Web
+
+        </div>
+
+    </aside>
+
+
+    <!-- CONTENIDO -->
+    <main class="contenido flex-grow-1">
+
+        <div class="container-fluid">
+
+
+            <!-- ENCABEZADO -->
+            <div class="
+                d-flex
+                justify-content-between
+                align-items-center
+                flex-wrap
+                gap-3
+                mb-4">
+
+                <div>
+
+                    <h1>
+                        Usuarios
+                    </h1>
+
+                    <p class="text-muted mb-0">
+                        Administración de usuarios y permisos del sistema.
+                    </p>
+
+                </div>
+
+
+                <button
+                    type="button"
+                    class="btn btn-panaderia"
+                    onclick="abrirNuevoUsuario()">
+
+                    + Nuevo usuario
+
+                </button>
+
+            </div>
+
+
+            <!-- MENSAJES -->
+            <div id="mensajeUsuarios"></div>
+
+
+            <!-- RESUMEN -->
+            <div class="row g-3 mb-4">
+
+                <div class="col-md-4">
+
+                    <div class="card">
+
+                        <div class="card-body">
+
+                            <h6 class="text-muted">
+                                Usuarios registrados
+                            </h6>
+
+                            <h2 id="totalUsuarios">
+                                0
+                            </h2>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-md-4">
+
+                    <div class="card">
+
+                        <div class="card-body">
+
+                            <h6 class="text-muted">
+                                Usuarios activos
+                            </h6>
+
+                            <h2
+                                id="totalActivos"
+                                class="text-success">
+
+                                0
+
+                            </h2>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-md-4">
+
+                    <div class="card">
+
+                        <div class="card-body">
+
+                            <h6 class="text-muted">
+                                Usuarios inactivos
+                            </h6>
+
+                            <h2
+                                id="totalInactivos"
+                                class="text-secondary">
+
+                                0
+
+                            </h2>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- BUSQUEDA -->
+            <div class="card mb-4">
+
+                <div class="card-body">
+
+                    <div class="row g-3 align-items-end">
+
+                        <div class="col-md-9">
+
+                            <label
+                                for="buscarUsuario"
+                                class="form-label">
+
+                                Buscar usuario
+
+                            </label>
+
+                            <input
+                                type="text"
+                                id="buscarUsuario"
+                                class="form-control"
+                                placeholder="Nombre, usuario, rol o sucursal">
+
+                        </div>
+
+
+                        <div class="col-md-3">
+
+                            <button
+                                type="button"
+                                class="btn btn-outline-secondary w-100"
+                                onclick="limpiarBusquedaUsuarios()">
+
+                                Limpiar búsqueda
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- TABLA -->
+            <div class="card">
+
+                <div class="card-body">
+
+                    <div class="table-responsive">
+
+                        <table class="table table-hover align-middle">
+
+                            <thead>
+
+                                <tr>
+
+                                    <th>ID</th>
+
+                                    <th>Nombre</th>
+
+                                    <th>Usuario</th>
+
+                                    <th>Rol</th>
+
+                                    <th>Sucursal</th>
+
+                                    <th>Estado</th>
+
+                                    <th>Fecha</th>
+
+                                    <th class="text-center">
+                                        Acciones
+                                    </th>
+
+                                </tr>
+
+                            </thead>
+
+
+                            <tbody id="tablaUsuarios">
+
+                                <tr>
+
+                                    <td
+                                        colspan="8"
+                                        class="text-center">
+
+                                        Cargando usuarios...
+
+                                    </td>
+
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
+
+</div>
+
+
+
+<!-- =========================================================
+     MODAL USUARIO
+========================================================= -->
+
+<div
+    class="modal fade"
+    id="modalUsuario"
+    tabindex="-1">
+
+    <div class="modal-dialog">
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+
+                <h5
+                    class="modal-title"
+                    id="tituloModalUsuario">
+
+                    Nuevo usuario
+
+                </h5>
+
+                <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal">
+                </button>
+
+            </div>
+
+
+            <div class="modal-body">
+
+
+                <input
+                    type="hidden"
+                    id="idUsuario">
+
+
+                <div class="mb-3">
+
+                    <label
+                        for="nombreCompleto"
+                        class="form-label">
+
+                        Nombre completo
+
+                    </label>
+
+                    <input
+                        type="text"
+                        id="nombreCompleto"
+                        class="form-control"
+                        maxlength="150">
+
+                </div>
+
+
+                <div class="mb-3">
+
+                    <label
+                        for="nombreUsuario"
+                        class="form-label">
+
+                        Usuario
+
+                    </label>
+
+                    <input
+                        type="text"
+                        id="nombreUsuario"
+                        class="form-control"
+                        maxlength="60">
+
+                </div>
+
+
+                <div
+                    class="mb-3"
+                    id="grupoPassword">
+
+                    <label
+                        for="passwordUsuario"
+                        class="form-label">
+
+                        Contraseña
+
+                    </label>
+
+                    <input
+                        type="password"
+                        id="passwordUsuario"
+                        class="form-control"
+                        minlength="6">
+
+                    <small class="text-muted">
+                        Mínimo 6 caracteres.
+                    </small>
+
+                </div>
+
+
+                <div class="mb-3">
+
+                    <label
+                        for="rolUsuario"
+                        class="form-label">
+
+                        Rol
+
+                    </label>
+
+                    <select
+                        id="rolUsuario"
+                        class="form-select"
+                        onchange="cambiarRolUsuario()">
+
+                        <option value="">
+                            Seleccione...
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div
+                    class="mb-3 d-none"
+                    id="grupoSucursalUsuario">
+
+                    <label
+                        for="sucursalUsuario"
+                        class="form-label">
+
+                        Sucursal
+
+                    </label>
+
+                    <select
+                        id="sucursalUsuario"
+                        class="form-select">
+
+                        <option value="">
+                            Seleccione...
+                        </option>
+
+                    </select>
+
+                    <small class="text-muted">
+                        Obligatoria únicamente para usuarios de sucursal.
+                    </small>
+
+                </div>
+
+            </div>
+
+
+            <div class="modal-footer">
+
+                <button
+                    type="button"
+                    class="btn btn-secondary"
+                    data-bs-dismiss="modal">
+
+                    Cancelar
+
+                </button>
+
+                <button
+                    type="button"
+                    class="btn btn-panaderia"
+                    onclick="guardarUsuario()">
+
+                    Guardar
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- =========================================================
+     MODAL CONTRASEÑA
+========================================================= -->
+
+<div
+    class="modal fade"
+    id="modalPassword"
+    tabindex="-1">
+
+    <div class="modal-dialog modal-sm">
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+
+                <h5 class="modal-title">
+                    Cambiar contraseña
+                </h5>
+
+                <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal">
+                </button>
+
+            </div>
+
+
+            <div class="modal-body">
+
+                <input
+                    type="hidden"
+                    id="idUsuarioPassword">
+
+
+                <p
+                    id="nombreUsuarioPassword"
+                    class="fw-bold">
+                </p>
+
+
+                <label
+                    for="nuevaPassword"
+                    class="form-label">
+
+                    Nueva contraseña
+
+                </label>
+
+                <input
+                    type="password"
+                    id="nuevaPassword"
+                    class="form-control"
+                    minlength="6">
+
+                <small class="text-muted">
+                    Mínimo 6 caracteres.
+                </small>
+
+            </div>
+
+
+            <div class="modal-footer">
+
+                <button
+                    type="button"
+                    class="btn btn-secondary"
+                    data-bs-dismiss="modal">
+
+                    Cancelar
+
+                </button>
+
+                <button
+                    type="button"
+                    class="btn btn-panaderia"
+                    onclick="actualizarPassword()">
+
+                    Actualizar
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
+</script>
+<script src="../js/config.js"></script>
+<script src="../js/auth.js"></script>
+<script src="../js/usuarios.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Pedidos - Panadería</title>
+
+    <!-- Bootstrap -->
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        rel="stylesheet">
+
+    <!-- CSS propio -->
+    <link
+        rel="stylesheet"
+        href="../css/estilos.css">
+
+</head>
+
+<body>
+
+<div class="d-flex">
+
+    <!-- =====================================================
+         MENU LATERAL
+    ====================================================== -->
+
+    <aside class="sidebar">
+
+        <div class="p-4">
+
+            <h4 class="mb-1">
+                Panadería
+            </h4>
+
+            <small>
+                Control de Producción
+            </small>
+
+        </div>
+
+
+        <nav>
+
+            <a
+                href="panel.html"
+                class="menu-link">
+
+                Inicio
+
+            </a>
+
+
+            <a
+                href="productos.html"
+                class="menu-link">
+
+                Productos
+
+            </a>
+
+
+            <a
+                href="sucursales.html"
+                class="menu-link">
+
+                Sucursales
+
+            </a>
+
+
+            <a
+                href="recetas.html"
+                class="menu-link">
+
+                Recetas
+
+            </a>
+
+
+            <a
+                href="inventario.html"
+                class="menu-link">
+
+                Inventario
+
+            </a>
+
+
+            <a
+                href="produccion.html"
+                class="menu-link">
+
+                Producción
+
+            </a>
+
+
+            <a
+                href="pedidos.html"
+                class="menu-link activo">
+
+                Pedidos
+
+            </a>
+
+        </nav>
+
+
+        <div class="universidad">
+
+            <strong>
+                Universidad Mariano Gálvez
+            </strong>
+
+            <br>
+
+            Desarrollo Web
+
+        </div>
+
+    </aside>
+
+
+
+    <!-- =====================================================
+         CONTENIDO
+    ====================================================== -->
+
+    <main class="contenido flex-grow-1">
+
+        <div class="container-fluid">
+
+
+            <!-- ENCABEZADO -->
+
+            <div class="
+                d-flex
+                justify-content-between
+                align-items-center
+                flex-wrap
+                gap-3
+                mb-4">
+
+                <div>
+
+                    <h1>
+                        Pedidos
+                    </h1>
+
+                    <p class="text-muted mb-0">
+                        Administración de pedidos realizados por las sucursales.
+                    </p>
+
+                </div>
+
+
+                <button
+                    class="btn btn-panaderia"
+                    onclick="abrirNuevoPedido()">
+
+                    + Nuevo pedido
+
+                </button>
+
+            </div>
+
+
+
+            <!-- =====================================================
+                 RESUMEN
+            ====================================================== -->
+
+            <div class="row g-3 mb-4">
+
+
+                <!-- TOTAL -->
+
+                <div class="col-md-3">
+
+                    <div class="card">
+
+                        <div class="card-body">
+
+                            <h6 class="text-muted">
+                                Total pedidos
+                            </h6>
+
+                            <h2 id="totalPedidos">
+                                0
+                            </h2>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- PENDIENTES -->
+
+                <div class="col-md-3">
+
+                    <div class="card">
+
+                        <div class="card-body">
+
+                            <h6 class="text-muted">
+                                Pendientes
+                            </h6>
+
+                            <h2
+                                id="totalPendientes"
+                                class="text-warning">
+
+                                0
+
+                            </h2>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- PROCESANDO -->
+
+                <div class="col-md-3">
+
+                    <div class="card">
+
+                        <div class="card-body">
+
+                            <h6 class="text-muted">
+                                Procesando
+                            </h6>
+
+                            <h2
+                                id="totalProcesando"
+                                class="text-primary">
+
+                                0
+
+                            </h2>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- DESPACHADOS -->
+
+                <div class="col-md-3">
+
+                    <div class="card">
+
+                        <div class="card-body">
+
+                            <h6 class="text-muted">
+                                Despachados
+                            </h6>
+
+                            <h2
+                                id="totalDespachados"
+                                class="text-success">
+
+                                0
+
+                            </h2>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =====================================================
+                 FILTROS
+            ====================================================== -->
+
+            <div class="card mb-4">
+
+                <div class="card-body">
+
+                    <div class="row g-3 align-items-end">
+
+
+                        <!-- BUSCAR -->
+
+                        <div class="col-md-6">
+
+                            <label
+                                for="buscarPedido"
+                                class="form-label">
+
+                                Buscar sucursal
+
+                            </label>
+
+                            <input
+                                type="text"
+                                id="buscarPedido"
+                                class="form-control"
+                                placeholder="Ejemplo: CENTRAL">
+
+                        </div>
+
+
+
+                        <!-- ESTADO -->
+
+                        <div class="col-md-3">
+
+                            <label
+                                for="filtroEstado"
+                                class="form-label">
+
+                                Estado
+
+                            </label>
+
+                            <select
+                                id="filtroEstado"
+                                class="form-select">
+
+                                <option value="">
+                                    Todos
+                                </option>
+
+                                <option value="PENDIENTE">
+                                    Pendiente
+                                </option>
+
+                                <option value="PROCESANDO">
+                                    Procesando
+                                </option>
+
+                                <option value="DESPACHADO">
+                                    Despachado
+                                </option>
+
+                                <option value="CANCELADO">
+                                    Cancelado
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+
+                        <!-- LIMPIAR -->
+
+                        <div class="col-md-3">
+
+                            <button
+                                class="btn btn-outline-secondary w-100"
+                                onclick="limpiarFiltros()">
+
+                                Limpiar filtros
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =====================================================
+                 CAMBIO DE VISTA
+            ====================================================== -->
+
+            <div class="card mb-4">
+
+                <div class="card-body">
+
+                    <div class="
+                        d-flex
+                        gap-2
+                        flex-wrap">
+
+                        <button
+                            id="btnActivos"
+                            class="btn btn-panaderia"
+                            onclick="mostrarVista('activos')">
+
+                            Pedidos activos
+
+                        </button>
+
+
+                        <button
+                            id="btnHistorial"
+                            class="btn btn-outline-secondary"
+                            onclick="mostrarVista('historial')">
+
+                            Historial
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =====================================================
+                 PEDIDOS ACTIVOS
+            ====================================================== -->
+
+            <section id="seccionActivos">
+
+                <div class="
+                    d-flex
+                    justify-content-between
+                    align-items-center
+                    mb-3">
+
+                    <div>
+
+                        <h5 class="mb-1">
+                            Pedidos activos
+                        </h5>
+
+                        <small class="text-muted">
+                            Pedidos pendientes y en procesamiento.
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+                <div id="contenedorPedidosActivos">
+
+                    <div class="card">
+
+                        <div class="card-body text-center">
+
+                            Cargando pedidos...
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- =====================================================
+                 HISTORIAL
+            ====================================================== -->
+
+            <section
+                id="seccionHistorial"
+                class="d-none">
+
+                <div class="mb-3">
+
+                    <h5 class="mb-1">
+                        Historial de pedidos
+                    </h5>
+
+                    <small class="text-muted">
+                        Pedidos despachados o cancelados.
+                    </small>
+
+                </div>
+
+
+                <div id="contenedorHistorial">
+
+                    <div class="card">
+
+                        <div class="card-body text-center">
+
+                            Cargando historial...
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        </div>
+
+    </main>
+
+</div>
+
+
+
+<!-- =========================================================
+     MODAL NUEVO PEDIDO
+========================================================= -->
+
+<div
+    class="modal fade"
+    id="modalPedido"
+    tabindex="-1">
+
+    <div class="modal-dialog">
+
+        <div class="modal-content">
+
+
+            <div class="modal-header">
+
+                <h5 class="modal-title">
+                    Nuevo pedido
+                </h5>
+
+                <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal">
+                </button>
+
+            </div>
+
+
+
+            <div class="modal-body">
+
+
+                <!-- SUCURSAL -->
+
+                <div class="mb-3">
+
+                    <label
+                        for="sucursalPedido"
+                        class="form-label">
+
+                        Sucursal
+
+                    </label>
+
+                    <select
+                        id="sucursalPedido"
+                        class="form-select">
+
+                        <option value="">
+                            Seleccione...
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+
+                <!-- TURNO -->
+
+                <div class="mb-3">
+
+                    <label
+                        for="turnoPedido"
+                        class="form-label">
+
+                        Turno
+
+                    </label>
+
+                    <select
+                        id="turnoPedido"
+                        class="form-select">
+
+                        <option value="">
+                            Seleccione...
+                        </option>
+
+                        <option value="MANANA">
+                            Mañana
+                        </option>
+
+                        <option value="TARDE">
+                            Tarde
+                        </option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="modal-footer">
+
+                <button
+                    type="button"
+                    class="btn btn-secondary"
+                    data-bs-dismiss="modal">
+
+                    Cancelar
+
+                </button>
+
+
+                <button
+                    type="button"
+                    class="btn btn-panaderia"
+                    onclick="crearPedido()">
+
+                    Crear pedido
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- =========================================================
+     MODAL AGREGAR PRODUCTO
+========================================================= -->
+
+<div
+    class="modal fade"
+    id="modalDetalle"
+    tabindex="-1">
+
+    <div class="modal-dialog">
+
+        <div class="modal-content">
+
+
+            <div class="modal-header">
+
+                <h5 class="modal-title">
+                    Agregar producto al pedido
+                </h5>
+
+                <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal">
+                </button>
+
+            </div>
+
+
+
+            <div class="modal-body">
+
+                <input
+                    type="hidden"
+                    id="idPedidoDetalle">
+
+
+                <!-- PRODUCTO -->
+
+                <div class="mb-3">
+
+                    <label
+                        for="productoPedido"
+                        class="form-label">
+
+                        Producto final
+
+                    </label>
+
+                    <select
+                        id="productoPedido"
+                        class="form-select">
+
+                        <option value="">
+                            Seleccione...
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+
+                <!-- CANTIDAD -->
+
+                <div class="mb-3">
+
+                    <label
+                        for="cantidadPedido"
+                        class="form-label">
+
+                        Cantidad
+
+                    </label>
+
+                    <input
+                        type="number"
+                        id="cantidadPedido"
+                        class="form-control"
+                        min="0.0001"
+                        step="0.0001"
+                        placeholder="Ejemplo: 50">
+
+                </div>
+
+            </div>
+
+
+
+            <div class="modal-footer">
+
+                <button
+                    type="button"
+                    class="btn btn-secondary"
+                    data-bs-dismiss="modal">
+
+                    Cancelar
+
+                </button>
+
+
+                <button
+                    type="button"
+                    class="btn btn-panaderia"
+                    onclick="agregarProducto()">
+
+                    Agregar producto
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- =========================================================
+     MODAL EDITAR CANTIDAD
+========================================================= -->
+
+<div
+    class="modal fade"
+    id="modalCantidad"
+    tabindex="-1">
+
+    <div class="modal-dialog modal-sm">
+
+        <div class="modal-content">
+
+
+            <div class="modal-header">
+
+                <h5 class="modal-title">
+                    Modificar cantidad
+                </h5>
+
+                <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal">
+                </button>
+
+            </div>
+
+
+
+            <div class="modal-body">
+
+                <input
+                    type="hidden"
+                    id="idPedidoEditar">
+
+                <input
+                    type="hidden"
+                    id="idProductoEditar">
+
+
+                <p
+                    id="nombreProductoEditar"
+                    class="fw-bold">
+                </p>
+
+
+                <label
+                    for="cantidadEditar"
+                    class="form-label">
+
+                    Nueva cantidad
+
+                </label>
+
+                <input
+                    type="number"
+                    id="cantidadEditar"
+                    class="form-control"
+                    min="0.0001"
+                    step="0.0001">
+
+            </div>
+
+
+
+            <div class="modal-footer">
+
+                <button
+                    type="button"
+                    class="btn btn-secondary"
+                    data-bs-dismiss="modal">
+
+                    Cancelar
+
+                </button>
+
+
+                <button
+                    type="button"
+                    class="btn btn-panaderia"
+                    onclick="actualizarCantidad()">
+
+                    Actualizar
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- Bootstrap -->
+<script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
+</script>
+<script src="../js/config.js"></script>
+<script src="../js/auth.js"></script>
+<!-- API -->
+<script src="../js/api.js"></script>
+
+<!-- PEDIDOS -->
+<script src="../js/pedidos.js"></script>
+
+</body>
+
+</html>

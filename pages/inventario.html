@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Inventario - Panadería</title>
+
+    <!-- Bootstrap -->
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        rel="stylesheet">
+
+    <!-- CSS propio -->
+    <link
+        rel="stylesheet"
+        href="../css/estilos.css">
+
+</head>
+
+<body>
+
+<div class="d-flex">
+
+    <!-- MENU LATERAL -->
+    <aside class="sidebar">
+
+        <div class="p-4">
+
+            <h4 class="mb-1">
+                Panadería
+            </h4>
+
+            <small>
+                Control de Producción
+            </small>
+
+        </div>
+
+        <nav>
+
+            <a href="panel.html"
+               class="menu-link">
+                Inicio
+            </a>
+
+            <a href="productos.html"
+               class="menu-link">
+                Productos
+            </a>
+
+            <a href="sucursales.html"
+               class="menu-link">
+                Sucursales
+            </a>
+
+            <a href="recetas.html"
+               class="menu-link">
+                Recetas
+            </a>
+
+            <a href="inventario.html"
+               class="menu-link activo">
+                Inventario
+            </a>
+
+            <a href="produccion.html"
+               class="menu-link">
+                Producción
+            </a>
+
+            <a href="pedidos.html"
+               class="menu-link">
+                Pedidos
+            </a>
+
+        </nav>
+
+        <div class="universidad">
+
+            <strong>
+                Universidad Mariano Gálvez
+            </strong>
+
+            <br>
+
+            Desarrollo Web
+
+        </div>
+
+    </aside>
+
+
+    <!-- CONTENIDO -->
+    <main class="contenido flex-grow-1">
+
+        <div class="container-fluid">
+
+            <!-- ENCABEZADO -->
+            <div class="
+                d-flex
+                justify-content-between
+                align-items-center
+                flex-wrap
+                gap-3
+                mb-4">
+
+                <div>
+
+                    <h1>
+                        Inventario
+                    </h1>
+
+                    <p class="text-muted mb-0">
+                        Control de existencias y movimientos.
+                    </p>
+
+                </div>
+
+                <button
+                    class="btn btn-panaderia"
+                    onclick="abrirEntrada()">
+
+                    + Registrar entrada
+
+                </button>
+
+            </div>
+
+
+            <!-- RESUMEN -->
+            <div class="row g-3 mb-4">
+
+                <div class="col-md-4">
+
+                    <div class="card">
+
+                        <div class="card-body">
+
+                            <h6 class="text-muted">
+                                Productos registrados
+                            </h6>
+
+                            <h2 id="totalInventario">
+                                0
+                            </h2>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-md-4">
+
+                    <div class="card">
+
+                        <div class="card-body">
+
+                            <h6 class="text-muted">
+                                Existencias bajas
+                            </h6>
+
+                            <h2
+                                id="totalBajos"
+                                class="text-danger">
+
+                                0
+
+                            </h2>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-md-4">
+
+                    <div class="card">
+
+                        <div class="card-body">
+
+                            <h6 class="text-muted">
+                                Movimientos registrados
+                            </h6>
+
+                            <h2 id="totalMovimientos">
+                                0
+                            </h2>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- FILTROS -->
+            <div class="card mb-4">
+
+                <div class="card-body">
+
+                    <div class="row g-3 align-items-end">
+
+                        <div class="col-md-6">
+
+                            <label
+                                for="buscarInventario"
+                                class="form-label">
+
+                                Buscar producto
+
+                            </label>
+
+                            <input
+                                type="text"
+                                id="buscarInventario"
+                                class="form-control"
+                                placeholder="Ejemplo: HARINA">
+
+                        </div>
+
+
+                        <div class="col-md-3">
+
+                            <label
+                                for="filtroTipoInventario"
+                                class="form-label">
+
+                                Tipo
+
+                            </label>
+
+                            <select
+                                id="filtroTipoInventario"
+                                class="form-select">
+
+                                <option value="">
+                                    Todos
+                                </option>
+
+                                <option value="INSUMO">
+                                    Insumos
+                                </option>
+
+                                <option value="PRODUCTO FINAL">
+                                    Productos finales
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <div class="col-md-3">
+
+                            <button
+                                class="btn btn-outline-secondary w-100"
+                                onclick="limpiarFiltros()">
+
+                                Limpiar filtros
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- INVENTARIO -->
+            <div class="card mb-4">
+
+                <div class="card-header bg-white">
+
+                    <h5 class="mb-0">
+                        Existencias actuales
+                    </h5>
+
+                </div>
+
+                <div class="card-body">
+
+                    <div class="table-responsive">
+
+                        <table class="
+                            table
+                            table-hover
+                            align-middle">
+
+                            <thead>
+
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Producto</th>
+                                    <th>Tipo</th>
+                                    <th>Existencia</th>
+                                    <th>Mínimo</th>
+                                    <th>Unidad</th>
+                                    <th>Estado</th>
+                                </tr>
+
+                            </thead>
+
+                            <tbody id="tablaInventario">
+
+                                <tr>
+                                    <td
+                                        colspan="7"
+                                        class="text-center">
+
+                                        Cargando inventario...
+
+                                    </td>
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- EXISTENCIAS BAJAS -->
+            <div class="card mb-4">
+
+                <div class="card-header bg-white">
+
+                    <h5 class="mb-0 text-danger">
+                        Existencias bajas
+                    </h5>
+
+                </div>
+
+                <div class="card-body">
+
+                    <div class="table-responsive">
+
+                        <table class="
+                            table
+                            table-hover
+                            align-middle">
+
+                            <thead>
+
+                                <tr>
+                                    <th>Producto</th>
+                                    <th>Existencia</th>
+                                    <th>Mínimo</th>
+                                    <th>Unidad</th>
+                                </tr>
+
+                            </thead>
+
+                            <tbody id="tablaBajos">
+
+                                <tr>
+                                    <td
+                                        colspan="4"
+                                        class="text-center">
+
+                                        Cargando...
+
+                                    </td>
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- MOVIMIENTOS -->
+            <div class="card">
+
+                <div class="card-header bg-white">
+
+                    <h5 class="mb-0">
+                        Movimientos de inventario
+                    </h5>
+
+                </div>
+
+                <div class="card-body">
+
+                    <div class="table-responsive">
+
+                        <table class="
+                            table
+                            table-hover
+                            align-middle">
+
+                            <thead>
+
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Fecha</th>
+                                    <th>Producto</th>
+                                    <th>Tipo</th>
+                                    <th>Cantidad</th>
+                                    <th>Descripción</th>
+                                </tr>
+
+                            </thead>
+
+                            <tbody id="tablaMovimientos">
+
+                                <tr>
+
+                                    <td
+                                        colspan="6"
+                                        class="text-center">
+
+                                        Cargando movimientos...
+
+                                    </td>
+
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
+
+</div>
+
+
+<!-- MODAL REGISTRAR ENTRADA -->
+<div
+    class="modal fade"
+    id="modalEntrada"
+    tabindex="-1">
+
+    <div class="modal-dialog">
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+
+                <h5 class="modal-title">
+                    Registrar entrada de inventario
+                </h5>
+
+                <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal">
+                </button>
+
+            </div>
+
+
+            <div class="modal-body">
+
+                <div class="mb-3">
+
+                    <label
+                        for="productoEntrada"
+                        class="form-label">
+
+                        Insumo
+
+                    </label>
+
+                    <select
+                        id="productoEntrada"
+                        class="form-select">
+
+                        <option value="">
+                            Seleccione...
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="mb-3">
+
+                    <label
+                        for="cantidadEntrada"
+                        class="form-label">
+
+                        Cantidad
+
+                    </label>
+
+                    <input
+                        type="number"
+                        id="cantidadEntrada"
+                        class="form-control"
+                        min="0.0001"
+                        step="0.0001">
+
+                </div>
+
+
+                <div class="mb-3">
+
+                    <label
+                        for="descripcionEntrada"
+                        class="form-label">
+
+                        Descripción
+
+                    </label>
+
+                    <textarea
+                        id="descripcionEntrada"
+                        class="form-control"
+                        rows="3"
+                        maxlength="200"
+                        placeholder="Ejemplo: Compra de harina">
+                    </textarea>
+
+                </div>
+
+
+                <div class="alert alert-info">
+
+                    Esta operación aumenta la existencia
+                    del insumo y registra un movimiento
+                    de tipo ENTRADA.
+
+                </div>
+
+            </div>
+
+
+            <div class="modal-footer">
+
+                <button
+                    type="button"
+                    class="btn btn-secondary"
+                    data-bs-dismiss="modal">
+
+                    Cancelar
+
+                </button>
+
+                <button
+                    type="button"
+                    class="btn btn-panaderia"
+                    onclick="registrarEntrada()">
+
+                    Registrar entrada
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- Bootstrap -->
+<script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
+</script>
+<script src="../js/config.js"></script>
+<script src="../js/auth.js"></script>
+<script src="../js/api.js"></script>
+<script src="../js/inventario.js"></script>
+
+</body>
+
+</html>

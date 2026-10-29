@@ -1,0 +1,1156 @@
+/* =========================================================
+   GENERAL
+========================================================= */
+
+body {
+    background-color: #f4f6f9;
+    min-height: 100vh;
+}
+
+
+/* =========================================================
+   MENU LATERAL
+========================================================= */
+
+.sidebar {
+
+    width: 250px;
+
+    min-height: 100vh;
+
+    background-color: #5d4037;
+
+    color: white;
+
+    position: fixed;
+
+    left: 0;
+    top: 0;
+
+    display: flex;
+
+    flex-direction: column;
+}
+
+
+.sidebar nav {
+    flex: 1;
+}
+
+
+.menu-link {
+
+    display: block;
+
+    padding: 14px 25px;
+
+    color: rgba(255,255,255,0.85);
+
+    text-decoration: none;
+
+    border-left: 4px solid transparent;
+
+    transition: 0.2s;
+}
+
+
+.menu-link:hover {
+
+    background-color: rgba(255,255,255,0.10);
+
+    color: white;
+}
+
+
+.menu-link.activo {
+
+    background-color: #795548;
+
+    border-left-color: white;
+
+    color: white;
+}
+
+
+.universidad {
+
+    padding: 20px;
+
+    font-size: 12px;
+
+    background-color: rgba(0,0,0,0.15);
+}
+
+
+/* =========================================================
+   CONTENIDO
+========================================================= */
+
+.contenido {
+
+    margin-left: 250px;
+
+    min-height: 100vh;
+
+    padding: 30px;
+}
+
+
+.contenido h1 {
+
+    color: #5d4037;
+
+    font-weight: 600;
+}
+
+
+/* =========================================================
+   DASHBOARD
+========================================================= */
+
+.tarjeta-dashboard {
+
+    border: none;
+
+    border-radius: 12px;
+
+    box-shadow:
+        0 2px 10px rgba(0,0,0,0.07);
+
+    height: 100%;
+}
+
+
+.tarjeta-dashboard h2 {
+
+    color: #5d4037;
+
+    font-weight: bold;
+
+    margin-top: 10px;
+}
+
+
+/* =========================================================
+   BOTONES
+========================================================= */
+
+.btn-panaderia {
+
+    background-color: #5d4037;
+
+    border-color: #5d4037;
+
+    color: white;
+}
+
+
+.btn-panaderia:hover {
+
+    background-color: #4e342e;
+
+    border-color: #4e342e;
+
+    color: white;
+}
+
+
+.btn-outline-panaderia {
+
+    background-color: transparent;
+
+    border: 1px solid #5d4037;
+
+    color: #5d4037;
+}
+
+
+.btn-outline-panaderia:hover {
+
+    background-color: #5d4037;
+
+    border-color: #5d4037;
+
+    color: white;
+}
+
+
+/* =========================================================
+   TABLAS
+========================================================= */
+
+.table thead th {
+
+    background-color: #f3efed;
+
+    color: #5d4037;
+
+    font-size: 14px;
+
+    white-space: nowrap;
+}
+
+
+.table td {
+    vertical-align: middle;
+}
+
+
+/* =========================================================
+   CARDS
+========================================================= */
+
+.card {
+
+    border: none;
+
+    border-radius: 12px;
+
+    box-shadow:
+        0 2px 10px rgba(0,0,0,0.06);
+}
+
+
+/* =========================================================
+   MODALES
+========================================================= */
+
+.modal-header {
+
+    background-color: #5d4037;
+
+    color: white;
+}
+
+
+.modal-header .btn-close {
+    filter: invert(1);
+}
+
+
+/* =========================================================
+   PORTADA PUBLICA
+========================================================= */
+
+.pagina-publica {
+
+    margin: 0;
+
+    background-color: #ffffff;
+
+    color: #2f2926;
+}
+
+
+/* =========================================================
+   NAVBAR PUBLICA
+========================================================= */
+
+.navbar-publica {
+
+    min-height: 85px;
+
+    border-bottom: 1px solid #eeeeee;
+
+    position: relative;
+
+    z-index: 1000;
+}
+
+
+.marca-bakeryos {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    text-decoration: none;
+}
+
+
+.logo-umg {
+
+    width: 58px;
+
+    height: 58px;
+
+    object-fit: contain;
+}
+
+
+.nombre-bakeryos {
+
+    display: block;
+
+    color: #5d4037;
+
+    font-size: 24px;
+
+    font-weight: 700;
+
+    line-height: 1.1;
+}
+
+
+.marca-bakeryos small {
+
+    display: block;
+
+    color: #888888;
+
+    font-size: 12px;
+
+    margin-top: 4px;
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero-bakery {
+
+    background:
+        linear-gradient(
+            110deg,
+            #ffffff 0%,
+            #ffffff 45%,
+            #f7f1ed 100%
+        );
+
+    overflow: hidden;
+}
+
+
+.min-vh-75 {
+    min-height: 75vh;
+}
+
+
+.hero-contenido {
+
+    padding-top: 70px;
+
+    padding-bottom: 70px;
+}
+
+
+.hero-etiqueta {
+
+    display: inline-block;
+
+    color: #9b6b4b;
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+    letter-spacing: 2px;
+
+    margin-bottom: 18px;
+}
+
+
+.hero-contenido h1 {
+
+    color: #4e342e;
+
+    font-size:
+        clamp(
+            52px,
+            7vw,
+            90px
+        );
+
+    font-weight: 800;
+
+    line-height: 0.95;
+
+    margin-bottom: 20px;
+}
+
+
+.hero-contenido h1 span {
+    color: #a87552;
+}
+
+
+.hero-contenido h2 {
+
+    max-width: 600px;
+
+    color: #352b27;
+
+    font-size:
+        clamp(
+            27px,
+            3vw,
+            42px
+        );
+
+    font-weight: 600;
+
+    line-height: 1.15;
+
+    margin-bottom: 22px;
+}
+
+
+.hero-contenido p {
+
+    max-width: 600px;
+
+    color: #77706d;
+
+    font-size: 18px;
+
+    line-height: 1.7;
+}
+
+
+/* =========================================================
+   IMAGEN PORTADA
+========================================================= */
+
+.hero-imagen-contenedor {
+
+    position: relative;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    min-height: 500px;
+}
+
+
+.hero-imagen-contenedor::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 420px;
+
+    height: 420px;
+
+    border-radius: 50%;
+
+    background-color: #ead8cc;
+
+    opacity: 0.45;
+}
+
+
+.hero-imagen {
+
+    position: relative;
+
+    z-index: 1;
+
+    width: 100%;
+
+    max-width: 600px;
+
+    max-height: 500px;
+
+    object-fit: contain;
+}
+
+
+/* =========================================================
+   SERVICIOS
+========================================================= */
+
+.seccion-servicios {
+
+    background-color: #f7f8fa;
+
+    padding: 85px 0;
+}
+
+
+.seccion-etiqueta {
+
+    color: #9b6b4b;
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+    letter-spacing: 2px;
+}
+
+
+.seccion-servicios h2 {
+
+    color: #4e342e;
+
+    font-weight: 700;
+
+    margin-top: 8px;
+}
+
+
+.servicio-card {
+
+    height: 100%;
+
+    background-color: white;
+
+    border-radius: 18px;
+
+    padding: 32px;
+
+    box-shadow:
+        0 8px 30px
+        rgba(0,0,0,0.05);
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+.servicio-card:hover {
+
+    transform:
+        translateY(-5px);
+
+    box-shadow:
+        0 12px 35px
+        rgba(0,0,0,0.09);
+}
+
+
+.servicio-icono {
+
+    width: 48px;
+
+    height: 48px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 12px;
+
+    background-color: #f0e3da;
+
+    color: #5d4037;
+
+    font-weight: bold;
+
+    margin-bottom: 22px;
+}
+
+
+.servicio-card h4 {
+
+    color: #5d4037;
+
+    font-weight: 700;
+}
+
+
+.servicio-card p {
+
+    color: #777777;
+
+    line-height: 1.7;
+
+    margin-bottom: 0;
+}
+
+
+/* =========================================================
+   CONSULTA DESTACADA
+========================================================= */
+
+.consulta-destacada {
+
+    background-color: #5d4037;
+
+    padding: 60px 0;
+}
+
+
+.consulta-contenido {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    gap: 40px;
+}
+
+
+.consulta-contenido span {
+
+    color: #d7bca9;
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    letter-spacing: 2px;
+}
+
+
+.consulta-contenido h2 {
+
+    color: white;
+
+    font-weight: 700;
+
+    margin-top: 8px;
+}
+
+
+.consulta-contenido p {
+
+    color:
+        rgba(
+            255,
+            255,
+            255,
+            0.75
+        );
+
+    max-width: 700px;
+
+    margin-bottom: 0;
+}
+
+
+/* =========================================================
+   FOOTER PUBLICO
+========================================================= */
+
+.footer-publico {
+
+    background-color: #282421;
+
+    color: #dddddd;
+
+    padding: 35px 0;
+}
+
+
+.footer-publico h5 {
+
+    color: white;
+
+    font-weight: 700;
+
+    margin-bottom: 6px;
+}
+
+
+.footer-publico p {
+
+    font-size: 14px;
+
+    color: #aaa5a2;
+}
+
+
+/* =========================================================
+   RESPONSIVE DEL SISTEMA
+========================================================= */
+
+@media (max-width: 768px) {
+
+    .sidebar {
+
+        width: 100%;
+
+        min-height: auto;
+
+        position: relative;
+    }
+
+
+    .contenido {
+
+        margin-left: 0;
+
+        padding: 20px;
+    }
+
+}
+
+
+/* =========================================================
+   RESPONSIVE PORTADA
+========================================================= */
+
+@media (max-width: 991px) {
+
+    .navbar-publica .navbar-collapse {
+
+        padding-top: 15px;
+
+        padding-bottom: 5px;
+    }
+
+
+    .hero-contenido {
+
+        text-align: center;
+
+        padding-top: 60px;
+
+        padding-bottom: 20px;
+    }
+
+
+    .hero-contenido h2,
+    .hero-contenido p {
+
+        margin-left: auto;
+
+        margin-right: auto;
+    }
+
+
+    .hero-contenido .d-flex {
+
+        justify-content: center;
+    }
+
+
+    .hero-imagen-contenedor {
+
+        min-height: 390px;
+    }
+
+
+    .hero-imagen-contenedor::before {
+
+        width: 330px;
+
+        height: 330px;
+    }
+
+
+    .hero-imagen {
+
+        max-height: 380px;
+    }
+
+}
+
+
+@media (max-width: 768px) {
+
+    .logo-umg {
+
+        width: 46px;
+
+        height: 46px;
+    }
+
+
+    .nombre-bakeryos {
+
+        font-size: 20px;
+    }
+
+
+    .marca-bakeryos small {
+
+        font-size: 10px;
+    }
+
+
+    .hero-contenido h1 {
+
+        font-size: 50px;
+    }
+
+
+    .hero-contenido p {
+
+        font-size: 16px;
+    }
+
+
+    .hero-imagen-contenedor {
+
+        min-height: 310px;
+    }
+
+
+    .hero-imagen-contenedor::before {
+
+        width: 260px;
+
+        height: 260px;
+    }
+
+
+    .consulta-contenido {
+
+        flex-direction: column;
+
+        align-items: flex-start;
+    }
+
+}
+/* =========================================================
+   LOGIN - PANADERIA SAN CARLOS
+========================================================= */
+
+.pagina-login {
+    margin: 0;
+    background-color: #f5f1ee;
+}
+
+
+.login-contenedor {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+
+/* =========================================================
+   PRESENTACION
+========================================================= */
+
+.login-presentacion {
+    background:
+        linear-gradient(
+            135deg,
+            #4e342e,
+            #795548
+        );
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 60px;
+}
+
+
+.login-presentacion-contenido {
+    max-width: 520px;
+    color: white;
+}
+
+
+.login-logo-umg {
+    width: 90px;
+    height: 90px;
+    object-fit: contain;
+
+    background-color: white;
+
+    border-radius: 18px;
+
+    padding: 8px;
+
+    margin-bottom: 35px;
+}
+
+
+.login-etiqueta {
+    display: block;
+
+    color: #e3c7b4;
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+    letter-spacing: 2px;
+
+    margin-bottom: 15px;
+}
+
+
+.login-presentacion h1 {
+    font-size: clamp(
+        45px,
+        6vw,
+        75px
+    );
+
+    font-weight: 800;
+
+    line-height: 1;
+
+    margin-bottom: 25px;
+}
+
+
+.login-presentacion h1 span {
+    color: #e2b89b;
+}
+
+
+.login-presentacion p {
+    max-width: 480px;
+
+    color: rgba(
+        255,
+        255,
+        255,
+        0.78
+    );
+
+    font-size: 19px;
+
+    line-height: 1.7;
+}
+
+
+/* =========================================================
+   FORMULARIO
+========================================================= */
+
+.login-formulario-contenedor {
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    padding: 50px;
+}
+
+
+.login-formulario {
+    width: 100%;
+
+    max-width: 440px;
+}
+
+
+.login-formulario h2 {
+    color: #4e342e;
+
+    font-size: 36px;
+
+    font-weight: 700;
+}
+
+
+.login-formulario .form-control {
+    border-radius: 10px;
+
+    border: 1px solid #d8d3d0;
+}
+
+
+.login-formulario .form-control:focus {
+    border-color: #795548;
+
+    box-shadow:
+        0 0 0 0.2rem
+        rgba(
+            121,
+            85,
+            72,
+            0.15
+        );
+}
+
+
+.login-regresar {
+    color: #795548;
+
+    text-decoration: none;
+
+    font-size: 14px;
+}
+
+
+.login-regresar:hover {
+    color: #4e342e;
+
+    text-decoration: underline;
+}
+
+
+/* =========================================================
+   LOGIN RESPONSIVE
+========================================================= */
+
+@media (max-width: 900px) {
+
+    .login-contenedor {
+        grid-template-columns: 1fr;
+    }
+
+
+    .login-presentacion {
+        min-height: 330px;
+
+        padding: 40px 25px;
+
+        text-align: center;
+    }
+
+
+    .login-presentacion-contenido {
+        margin: auto;
+    }
+
+
+    .login-logo-umg {
+        width: 70px;
+
+        height: 70px;
+
+        margin-bottom: 20px;
+    }
+
+
+    .login-presentacion h1 {
+        font-size: 45px;
+    }
+
+
+    .login-presentacion p {
+        margin-left: auto;
+
+        margin-right: auto;
+    }
+
+
+    .login-formulario-contenedor {
+        padding: 45px 20px;
+    }
+}
+
+
+/* =========================================================
+   BARRA DE SESION  */
+
+.barra-sesion {
+
+    width: 100%;
+
+    min-height: 68px;
+
+    background-color: white;
+
+    border-radius: 12px;
+
+    box-shadow:
+        0 2px 10px
+        rgba(0,0,0,0.07);
+
+    display: flex;
+
+    justify-content: flex-end;
+
+    align-items: center;
+
+    gap: 18px;
+
+    padding: 10px 16px;
+
+    margin-bottom: 25px;
+}
+
+
+.barra-sesion-usuario {
+
+    display: flex;
+
+    align-items: center;
+
+    text-align: right;
+}
+
+
+.barra-sesion-usuario div {
+
+    display: flex;
+
+    flex-direction: column;
+}
+
+
+.barra-sesion-usuario small {
+
+    color: #999999;
+
+    font-size: 9px;
+
+    font-weight: bold;
+
+    letter-spacing: 1px;
+}
+
+
+.barra-sesion-usuario strong {
+
+    color: #5d4037;
+
+    font-size: 13px;
+
+    margin-top: 2px;
+}
+
+
+.barra-sesion-usuario span {
+
+    color: #777777;
+
+    font-size: 11px;
+
+    margin-top: 2px;
+}
+
+
+.btn-cerrar-sesion-superior {
+
+    background-color: #5d4037;
+
+    border-color: #5d4037;
+
+    color: white;
+
+    white-space: nowrap;
+}
+
+
+.btn-cerrar-sesion-superior:hover {
+
+    background-color: #4e342e;
+
+    border-color: #4e342e;
+
+    color: white;
+}
+
+
+@media (max-width: 768px) {
+
+    .barra-sesion {
+
+        justify-content: space-between;
+
+        flex-wrap: wrap;
+    }
+
+
+    .barra-sesion-usuario {
+
+        text-align: left;
+    }
+
+}
