@@ -2,7 +2,6 @@
    PEDIDOS.JS
    Panadería San Carlos
 ========================================================= */
-
 const $ = id => document.getElementById(id);
 
 let pedidos = [];
@@ -127,6 +126,47 @@ function configurarInterfazPorRol() {
     if (titulo) {
         titulo.textContent =
             "Mis pedidos";
+    }
+
+
+    const contenedorBuscarSucursal =
+        $("contenedorBuscarSucursal");
+
+    if (contenedorBuscarSucursal) {
+
+        contenedorBuscarSucursal
+            .classList
+            .add("d-none");
+    }
+
+
+    const contenedorFiltroEstado =
+        $("contenedorFiltroEstado");
+
+    if (contenedorFiltroEstado) {
+
+        contenedorFiltroEstado
+            .classList
+            .remove("col-md-3");
+
+        contenedorFiltroEstado
+            .classList
+            .add("col-md-6");
+    }
+
+
+    const contenedorLimpiarFiltros =
+        $("contenedorLimpiarFiltros");
+
+    if (contenedorLimpiarFiltros) {
+
+        contenedorLimpiarFiltros
+            .classList
+            .remove("col-md-3");
+
+        contenedorLimpiarFiltros
+            .classList
+            .add("col-md-6");
     }
 
 
